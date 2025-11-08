@@ -353,7 +353,10 @@
     </div>
 
     <script>
-        const API_URL = 'http://localhost:4000/api';
+        // Auto-detect API URL (use current origin in production, localhost in dev)
+        const API_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:4000/api' 
+            : window.location.origin + '/api';
         let accessToken = localStorage.getItem('accessToken');
         let refreshToken = localStorage.getItem('refreshToken');
         let isRegistering = false;
