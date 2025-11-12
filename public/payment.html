@@ -269,7 +269,7 @@
     <script>
         // Auto-detect API URL (use current origin in production, localhost in dev)
         const API_URL = window.location.hostname === 'localhost' 
-            ? 'http://localhost:4000/api' 
+            ? 'https://ecommerce-trqx.onrender.com//api' 
             : window.location.origin + '/api';
         const urlParams = new URLSearchParams(window.location.search);
         const transactionId = urlParams.get('transactionId');
@@ -470,7 +470,7 @@
                         // Call webhook to notify e-commerce app
                         setTimeout(() => {
                             const redirectUrl = window.location.hostname === 'localhost' 
-                                ? 'http://localhost:4000/?payment=success' 
+                                ? 'https://ecommerce-trqx.onrender.com//?payment=success' 
                                 : window.location.origin + '/?payment=success';
                             window.location.href = redirectUrl;
                         }, 2000);
