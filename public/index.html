@@ -337,15 +337,7 @@
                 <label>Zip Code:</label>
                 <input type="text" id="shippingZipCode" required>
             </div>
-            <div class="form-group">
-                <label>Payment Method:</label>
-                <select id="paymentType" required style="width: 100%; padding: 10px; border: 2px solid #e1e1e1; border-radius: 6px;">
-                    <option value="">Select payment method</option>
-                    <option value="CARD">Card Payment</option>
-                    <option value="CRYPTO">Cryptocurrency</option>
-                    <option value="D17">D17 Payment</option>
-                </select>
-            </div>
+            <!-- Payment method removed — payment selection handled by the payment portal -->
             <button type="submit" class="btn btn-success" style="width: 100%;">
                 💳 PAYER (Pay Now)
             </button>
@@ -355,7 +347,7 @@
     <script>
         // Auto-detect API URL (use current origin in production, localhost in dev)
         const API_URL = window.location.hostname === 'localhost' 
-            ? 'https://ecommerce-trqx.onrender.com/api' 
+            ? 'http://localhost:4000/api' 
             : window.location.origin + '/api';
         let accessToken = localStorage.getItem('accessToken');
         let refreshToken = localStorage.getItem('refreshToken');
@@ -615,9 +607,8 @@
                             'Content-Type': 'application/json',
                             'Authorization': `Bearer ${accessToken}`,
                         },
-                        body: JSON.stringify({
-                            paymentType: document.getElementById('paymentType').value,
-                        }),
+                        // No payment method is provided from the checkout page — the payment portal will handle agent/method selection
+                        body: JSON.stringify({}),
                     });
 
                     const paymentData = await paymentResponse.json();

@@ -131,13 +131,8 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user!.userId;
     const { orderId } = req.params;
-    const { paymentType } = req.body;
-
-    console.log('💳 Initiate payment request:', { orderId, paymentType, userId });
-
-    if (!paymentType) {
-      return res.status(400).json({ message: 'Payment type required' });
-    }
+    // No payment method will be provided by the checkout page. We delegate method/agent selection to the payment frontend.
+    console.log('💳 Initiate payment request (no payment type from checkout):', { orderId, userId });
 
     // Get order
     const order = await prisma.order.findUnique({
@@ -167,7 +162,7 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
 
     const paymentPayload = {
       amount: order.totalAmount,
-      paymentMethodType: paymentType,
+      // intentionally omitting any payment method type — payment portal / backend will choose an agent/method
       userEmail: order.user.email,
       userId: order.userId,
       webhookReturnURL: webhookUrl,
@@ -206,14 +201,15 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
       where: { id: orderId },
       data: {
         status: 'PAYMENT_INITIATED',
-        paymentType,
         paymentTransactionId: paymentData.id,
       },
     });
 
+    const frontendPaymentUrl = process.env.FRONTEND_PAYMENT_URL || 'http://localhost:3000';
+
     res.json({
       message: 'Payment initiated successfully',
-      redirect_url: `https://tfinproject.pages.dev/payment?transactionId=${paymentData.id}&orderId=${orderId}`,
+      redirect_url: `${frontendPaymentUrl.replace(/\/$/, '')}/payment?transactionId=${paymentData.id}&orderId=${orderId}`,
       transaction_id: paymentData.id,
     });
   } catch (error) {
