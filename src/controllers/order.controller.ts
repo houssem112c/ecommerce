@@ -161,7 +161,7 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
     const webhookUrl = process.env.PAYMENT_WEBHOOK_URL!;
 
     const paymentPayload = {
-      amount: order.totalAmount.toFixed(2),
+      amount: order.totalAmount,
       // intentionally omitting any payment method type — payment portal / backend will choose an agent/method
       userEmail: order.user.email,
       userId: order.userId,
