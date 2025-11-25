@@ -63,10 +63,10 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
     }
 
     // Calculate total
-    const totalAmount = cart.items.reduce(
+    const totalAmount = Math.round(cart.items.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
       0
-    );
+    ) * 100) / 100;
 
     console.log('💰 Total amount:', totalAmount);
     console.log('📝 Creating order...');
@@ -161,7 +161,7 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
     const webhookUrl = process.env.PAYMENT_WEBHOOK_URL!;
 
     const paymentPayload = {
-      amount: order.totalAmount,
+      amount: order.totalAmount.toFixed(2),
       // intentionally omitting any payment method type — payment portal / backend will choose an agent/method
       userEmail: order.user.email,
       userId: order.userId,
