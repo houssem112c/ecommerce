@@ -159,13 +159,15 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
     const paymentApiUrl = process.env.PAYMENT_API_URL!;
     const paymentApiKey = process.env.PAYMENT_API_KEY!;
     const webhookUrl = process.env.PAYMENT_WEBHOOK_URL!;
+    // Return URL is where user is redirected after payment - use PAYMENT_RETURN_URL or extract base from webhook URL
+    const returnUrl = process.env.PAYMENT_RETURN_URL || new URL(webhookUrl).origin;
 
     const paymentPayload = {
       amount: order.totalAmount,
       // intentionally omitting any payment method type — payment portal / backend will choose an agent/method
       userEmail: order.user.email,
       userId: order.userId,
-      webhookReturnURL: webhookUrl,
+      webhookReturnURL: returnUrl,
     };
 
     console.log('📤 Sending payment request to:', paymentApiUrl);
