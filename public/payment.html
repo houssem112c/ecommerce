@@ -280,7 +280,7 @@
 
         // Continue to the dedicated payment frontend for agent selection and proof upload
         document.getElementById('continueToPayment').addEventListener('click', () => {
-            const frontend = (globalThis?.PAYMENT_CONFIG && globalThis.PAYMENT_CONFIG.FRONTEND_BASE_URL) || 'http://localhost:3000';
+            const frontend = (globalThis?.PAYMENT_CONFIG && globalThis.PAYMENT_CONFIG.FRONTEND_BASE_URL) || 'https://tfinproject.pages.dev';
             const redirect = `${frontend.replace(/\/$/, '')}/payment?transactionId=${encodeURIComponent(transactionId || '')}${orderId ? `&orderId=${encodeURIComponent(orderId)}` : ''}`;
             window.location.href = redirect;
         });
