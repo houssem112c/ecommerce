@@ -62,14 +62,14 @@ export const handlePaymentWebhook = async (req: Request, res: Response) => {
         success: true,
         message: 'Payment confirmed, order updated',
       });
-    } else if (status === 'REFUSED' || valid === false) {
-      // Payment refused - update order status
+    } else if (status === 'REFUSED' || status === 'TIME_ENDED' || valid === false) {
+      // Payment refused or timed out - update order status
       await prisma.order.update({
         where: { id: order.id },
         data: {
           status: 'CANCELLED',
           cancelledAt: new Date(),
-          notes: `Payment refused: ${rejectionReason || 'Unknown reason'}`,
+          notes: `Payment ${status === 'TIME_ENDED' ? 'timed out' : 'refused'}: ${rejectionReason || 'Unknown reason'}`,
         },
       });
 
