@@ -207,7 +207,7 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
       },
     });
 
-    const frontendPaymentUrl = process.env.FRONTEND_PAYMENT_URL || 'https://tfinproject.pages.dev/';
+    const frontendPaymentUrl = process.env.FRONTEND_PAYMENT_URL || 'https://p2-front.onrender.com/';
 
     res.json({
       message: 'Payment initiated successfully',
