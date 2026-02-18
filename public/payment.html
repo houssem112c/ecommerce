@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,7 @@
             background: white;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
 
@@ -71,7 +72,8 @@
             color: #333;
         }
 
-        select, input[type="file"] {
+        select,
+        input[type="file"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #e1e1e1;
@@ -206,11 +208,17 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="card">
@@ -233,7 +241,9 @@
             <!-- Payment Form -->
             <div id="paymentForm">
                 <div class="form-group">
-                    <p style="color:#333; font-size:14px; margin-bottom:10px;">You will be redirected to our secure payment portal where you'll be able to choose a payment method (for this admin), pick an agent, upload proof of payment and complete the process.</p>
+                    <p style="color:#333; font-size:14px; margin-bottom:10px;">You will be redirected to our secure
+                        payment portal where you'll be able to choose a payment method (for this admin), pick an agent,
+                        upload proof of payment and complete the process.</p>
                     <button class="btn btn-primary" id="continueToPayment">Continue to secure payment</button>
                 </div>
             </div>
@@ -250,13 +260,13 @@
 
     <script>
         // Auto-detect API URL (use current origin in production, localhost in dev)
-        const API_URL = window.location.hostname === 'localhost' 
-            ? 'https://ecommerce-trqx.onrender.com/api' 
+        const API_URL = window.location.hostname === 'localhost'
+            ? 'https://ecommerce-trqx.onrender.com/api'
             : window.location.origin + '/api';
         const urlParams = new URLSearchParams(window.location.search);
         const transactionId = urlParams.get('transactionId');
         const orderId = urlParams.get('orderId');
-        
+
         let selectedMethodId = null;
         let timerInterval = null;
         let statusCheckInterval = null;
@@ -326,8 +336,8 @@
 
                         // Call webhook to notify e-commerce app
                         setTimeout(() => {
-                            const redirectUrl = window.location.hostname === 'localhost' 
-                                ? 'https://ecommerce-trqx.onrender.com/?payment=success' 
+                            const redirectUrl = window.location.hostname === 'localhost'
+                                ? 'https://ecommerce-trqx.onrender.com/?payment=success'
                                 : window.location.origin + '/?payment=success';
                             window.location.href = redirectUrl;
                         }, 2000);
@@ -348,4 +358,5 @@
         loadTransactionDetails();
     </script>
 </body>
+
 </html>

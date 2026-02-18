@@ -46,8 +46,8 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
 
     if (!cart || cart.items.length === 0) {
       console.error('❌ Cart is empty for userId', userId);
-      return res.status(400).json({ 
-        message: 'Your cart is empty. Please add products to your cart before checking out.' 
+      return res.status(400).json({
+        message: 'Your cart is empty. Please add products to your cart before checking out.'
       });
     }
 
@@ -119,9 +119,9 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
       code: error.code,
       meta: error.meta,
     });
-    res.status(500).json({ 
+    res.status(500).json({
       message: 'Internal server error',
-      error: error.message 
+      error: error.message
     });
   }
 };

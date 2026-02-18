@@ -59,7 +59,7 @@ This creates:
 npm run dev
 ```
 
-Server runs on: http://localhost:4000
+Server runs on: https://ecommerce-trqx.onrender.com
 
 ## API Endpoints
 
@@ -101,7 +101,7 @@ Server runs on: http://localhost:4000
 ### 1. Register User
 
 ```bash
-POST http://localhost:4000/api/auth/register
+POST https://ecommerce-trqx.onrender.com/api/auth/register
 Content-Type: application/json
 
 {
@@ -120,7 +120,7 @@ Content-Type: application/json
 ### 2. Login
 
 ```bash
-POST http://localhost:4000/api/auth/login
+POST https://ecommerce-trqx.onrender.com/api/auth/login
 Content-Type: application/json
 
 {
@@ -134,13 +134,13 @@ Response includes `accessToken` and `refreshToken`.
 ### 3. Browse Products
 
 ```bash
-GET http://localhost:4000/api/products
+GET https://ecommerce-trqx.onrender.com/api/products
 ```
 
 ### 4. Add to Cart
 
 ```bash
-POST http://localhost:4000/api/cart/add
+POST https://ecommerce-trqx.onrender.com/api/cart/add
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 
@@ -153,7 +153,7 @@ Content-Type: application/json
 ### 5. Create Order
 
 ```bash
-POST http://localhost:4000/api/orders/create
+POST https://ecommerce-trqx.onrender.com/api/orders/create
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 
@@ -169,7 +169,7 @@ Content-Type: application/json
 ### 6. Initiate Payment (PAYER Button!)
 
 ```bash
-POST http://localhost:4000/api/orders/initiate-payment/:orderId
+POST https://ecommerce-trqx.onrender.com/api/orders/initiate-payment/:orderId
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 

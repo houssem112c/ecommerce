@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: ecommerce
       POSTGRES_PASSWORD: ecommerce123
-      POSTGRES_DB: ecommerce_db
+      POSTGRES_DB: ecommerce
     ports:
       - "5433:5432"
     volumes:

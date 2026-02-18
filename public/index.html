@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +11,19 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f5f5;
         }
-        
+
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -30,23 +31,23 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         h1 {
             font-size: 28px;
         }
-        
+
         .user-info {
             display: flex;
             gap: 15px;
             align-items: center;
         }
-        
+
         .cart-icon {
             position: relative;
             cursor: pointer;
             font-size: 24px;
         }
-        
+
         .cart-badge {
             position: absolute;
             top: -8px;
@@ -61,7 +62,7 @@
             justify-content: center;
             font-size: 12px;
         }
-        
+
         .btn {
             padding: 10px 20px;
             border: none;
@@ -70,62 +71,62 @@
             font-size: 14px;
             transition: all 0.3s;
         }
-        
+
         .btn-primary {
             background: white;
             color: #667eea;
             font-weight: 600;
         }
-        
+
         .btn-primary:hover {
             background: #f0f0f0;
         }
-        
+
         .btn-success {
             background: #28a745;
             color: white;
         }
-        
+
         .btn-success:hover {
             background: #218838;
         }
-        
+
         .btn-danger {
             background: #dc3545;
             color: white;
         }
-        
+
         .btn-small {
             padding: 5px 10px;
             font-size: 12px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
         }
-        
+
         .auth-section {
             background: white;
             padding: 30px;
             border-radius: 12px;
             max-width: 400px;
             margin: 50px auto;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         .form-group {
             margin-bottom: 15px;
         }
-        
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: 500;
             color: #333;
         }
-        
+
         input {
             width: 100%;
             padding: 10px;
@@ -133,32 +134,32 @@
             border-radius: 6px;
             font-size: 14px;
         }
-        
+
         input:focus {
             outline: none;
             border-color: #667eea;
         }
-        
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
-        
+
         .product-card {
             background: white;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
-        
+
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         .product-image {
             width: 100%;
             height: 200px;
@@ -170,41 +171,41 @@
             margin-bottom: 15px;
             font-size: 48px;
         }
-        
+
         .product-name {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 8px;
             color: #333;
         }
-        
+
         .product-category {
             color: #667eea;
             font-size: 12px;
             margin-bottom: 8px;
         }
-        
+
         .product-price {
             font-size: 24px;
             color: #28a745;
             font-weight: 700;
             margin-bottom: 10px;
         }
-        
+
         .product-stock {
             font-size: 12px;
             color: #666;
             margin-bottom: 15px;
         }
-        
+
         .cart-section {
             background: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 30px;
         }
-        
+
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -212,7 +213,7 @@
             padding: 15px;
             border-bottom: 1px solid #e1e1e1;
         }
-        
+
         .cart-total {
             font-size: 24px;
             font-weight: 700;
@@ -220,32 +221,32 @@
             margin-top: 20px;
             color: #667eea;
         }
-        
+
         .hidden {
             display: none;
         }
-        
+
         .checkout-form {
             background: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             margin: 30px auto;
         }
-        
+
         .alert {
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        
+
         .alert-success {
             background: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
-        
+
         .alert-error {
             background: #f8d7da;
             color: #721c24;
@@ -253,6 +254,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -346,8 +348,8 @@
 
     <script>
         // Auto-detect API URL (use current origin in production, localhost in dev)
-        const API_URL = window.location.hostname === 'localhost' 
-            ? 'https://ecommerce-trqx.onrender.com/api' 
+        const API_URL = window.location.hostname === 'localhost'
+            ? 'https://ecommerce-trqx.onrender.com/api'
             : window.location.origin + '/api';
         let accessToken = localStorage.getItem('accessToken');
         let refreshToken = localStorage.getItem('refreshToken');
@@ -374,7 +376,7 @@
             isRegistering = !isRegistering;
             document.getElementById('authTitle').textContent = isRegistering ? 'Register' : 'Login';
             document.getElementById('authSubmitBtn').textContent = isRegistering ? 'Register' : 'Login';
-            document.getElementById('authToggle').textContent = isRegistering ? 
+            document.getElementById('authToggle').textContent = isRegistering ?
                 'Already have an account? Login' : "Don't have an account? Register";
             document.getElementById('nameFields').classList.toggle('hidden', !isRegistering);
         }
@@ -383,7 +385,7 @@
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            
+
             try {
                 const endpoint = isRegistering ? '/auth/register' : '/auth/login';
                 const body = isRegistering ? {
@@ -406,7 +408,7 @@
                     refreshToken = data.refreshToken;
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('refreshToken', refreshToken);
-                    
+
                     showAlert('authAlert', 'Success! Redirecting...', 'success');
                     setTimeout(() => {
                         fetchProfile();
@@ -516,9 +518,9 @@
                 });
 
                 const data = await response.json();
-                
+
                 document.getElementById('cartBadge').textContent = data.totalItems;
-                
+
                 const cartItemsDiv = document.getElementById('cartItems');
                 cartItemsDiv.innerHTML = data.cart.items.map(item => `
                     <div class="cart-item">
@@ -640,4 +642,5 @@
         }
     </script>
 </body>
+
 </html>
