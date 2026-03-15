@@ -261,7 +261,7 @@
     <script>
         // Auto-detect API URL (use current origin in production, localhost in dev)
         const API_URL = window.location.hostname === 'localhost'
-            ? 'https://ecommerce-trqx.onrender.com/api'
+            ? 'http://localhost:4000/api'
             : window.location.origin + '/api';
         const urlParams = new URLSearchParams(window.location.search);
         const transactionId = urlParams.get('transactionId');
@@ -276,7 +276,7 @@
         // Load transaction details
         async function loadTransactionDetails() {
             try {
-                const response = await fetch(`https://p2-back.onrender.com/transaction/${transactionId}`);
+                const response = await fetch(`https://p2-back-t8hx.onrender.com/transaction/${transactionId}`);
                 const data = await response.json();
 
                 document.getElementById('userEmail').textContent = data.userEmail;
@@ -324,7 +324,7 @@
         function checkTransactionStatus() {
             statusCheckInterval = setInterval(async () => {
                 try {
-                    const response = await fetch(`https://p2-back.onrender.com/transaction/${transactionId}`);
+                    const response = await fetch(`https://p2-back-t8hx.onrender.com/transaction/${transactionId}`);
                     const data = await response.json();
 
                     if (data.status === 'CONFIRMED') {
@@ -337,7 +337,7 @@
                         // Call webhook to notify e-commerce app
                         setTimeout(() => {
                             const redirectUrl = window.location.hostname === 'localhost'
-                                ? 'https://ecommerce-trqx.onrender.com/?payment=success'
+                                ? 'http://localhost:4000/?payment=success'
                                 : window.location.origin + '/?payment=success';
                             window.location.href = redirectUrl;
                         }, 2000);

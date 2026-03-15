@@ -24,7 +24,7 @@ services:
       - key: JWT_REFRESH_EXPIRES_IN
         value: 7d
       - key: PAYMENT_API_URL
-        value: https://p2-back.onrender.com/transaction/payment/initiate
+        value: https://p2-back-t8hx.onrender.com/transaction/payment/initiate
       - key: PAYMENT_API_KEY
         value: 69ca0c78-4d5d-49fc-8e05-33db8e279356
       - key: PAYMENT_WEBHOOK_URL

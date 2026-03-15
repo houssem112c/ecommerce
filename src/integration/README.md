@@ -20,7 +20,7 @@ Beginner step-by-step
    - The webhook handler should confirm the transaction via `GET /transaction/{transactionId}` and update your order to `PAID` or `FAILED`.
 
 Environment variables
-- `PAYMENT_API_URL` — gateway base URL (example: `https://p2-back.onrender.com`)
+- `PAYMENT_API_URL` — gateway base URL (example: `https://p2-back-t8hx.onrender.com`)
 - `PAYMENT_API_KEY` — website API key (send as `x-api-key` header)
 - `FRONTEND_PAYMENT_URL` — optional frontend payment UI base URL
 

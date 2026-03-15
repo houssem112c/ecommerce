@@ -182,17 +182,37 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
       },
       body: JSON.stringify(paymentPayload),
     });
-
-    const paymentData: any = await paymentResponse.json();
+    // Handle responses that aren't valid JSON (e.g., rate limits returning plain text)
+    const contentType = paymentResponse.headers.get('content-type') || '';
+    let paymentData: any;
+    if (contentType.includes('application/json')) {
+      try {
+        paymentData = await paymentResponse.json();
+      } catch (e) {
+        const raw = await paymentResponse.text();
+        console.error('❌ Payment API returned invalid JSON:', raw);
+        return res.status(paymentResponse.status || 502).json({
+          message: 'Payment initiation failed',
+          error: raw,
+        });
+      }
+    } else {
+      const raw = await paymentResponse.text();
+      console.error('❌ Payment API returned non-JSON response:', raw);
+      return res.status(paymentResponse.status || 502).json({
+        message: 'Payment initiation failed',
+        error: raw,
+      });
+    }
 
     console.log('📥 Payment API response:', paymentData);
 
     // Check if payment was successful by looking for transaction ID
-    if (!paymentData.id || paymentData.statusCode >= 400) {
+    if (!paymentData || !paymentData.id || (paymentData.statusCode && paymentData.statusCode >= 400) || !paymentResponse.ok) {
       console.error('❌ Payment initiation failed:', paymentData);
-      return res.status(paymentData.statusCode || 400).json({
+      return res.status(paymentData?.statusCode || paymentResponse.status || 400).json({
         message: 'Payment initiation failed',
-        error: paymentData.message || 'Unknown error',
+        error: paymentData?.message || paymentData || 'Unknown error',
       });
     }
 
@@ -207,7 +227,7 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
       },
     });
 
-    const frontendPaymentUrl = process.env.FRONTEND_PAYMENT_URL || 'https://p2-front.onrender.com/';
+    const frontendPaymentUrl = process.env.FRONTEND_PAYMENT_URL || 'https://p2-front-ybrx.onrender.com/';
 
     res.json({
       message: 'Payment initiated successfully',
