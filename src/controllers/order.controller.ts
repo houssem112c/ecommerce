@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 export const createOrder = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user!.userId;
-    const { shippingAddress, shippingCity, shippingCountry, shippingZipCode, notes } = req.body;
+    const { shippingAddress, shippingCity, shippingCountry, shippingZipCode, notes, currency } = req.body;
 
     console.log('📦 Create order request:', {
       userId,
@@ -16,6 +16,7 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
       shippingCity,
       shippingCountry,
       shippingZipCode,
+      currency: currency || 'USD (default)',
     });
 
     // Extra debug: print all carts for all users
@@ -76,6 +77,7 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
       data: {
         userId,
         totalAmount,
+        currency: currency || 'USD',
         shippingAddress,
         shippingCity,
         shippingCountry,
@@ -164,6 +166,7 @@ export const initiatePayment = async (req: AuthRequest, res: Response) => {
 
     const paymentPayload = {
       amount: order.totalAmount,
+      currency: order.currency,
       // intentionally omitting any payment method type — payment portal / backend will choose an agent/method
       userEmail: order.user.email,
       userId: order.userId,

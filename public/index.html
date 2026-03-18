@@ -339,6 +339,22 @@
                 <label>Zip Code:</label>
                 <input type="text" id="shippingZipCode" required>
             </div>
+            <div class="form-group">
+                <label>Currency:</label>
+                <select id="currency" required style="width: 100%; padding: 10px; border: 2px solid #e1e1e1; border-radius: 6px; font-size: 14px;">
+                    <option value="">-- Select Currency --</option>
+                    <option value="USD">USD - US Dollar</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - British Pound</option>
+                    <option value="DT">DT - Tunisian Dinar</option>
+                    <option value="SAR">SAR - Saudi Riyal</option>
+                    <option value="AED">AED - UAE Dirham</option>
+                    <option value="INR">INR - Indian Rupee</option>
+                    <option value="CNY">CNY - Chinese Yuan</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="CAD">CAD - Canadian Dollar</option>
+                </select>
+            </div>
             <!-- Payment method removed — payment selection handled by the payment portal -->
             <button type="submit" class="btn btn-success" style="width: 100%;">
                 💳 PAYER (Pay Now)
@@ -596,6 +612,7 @@
                         shippingCity: document.getElementById('shippingCity').value,
                         shippingCountry: document.getElementById('shippingCountry').value,
                         shippingZipCode: document.getElementById('shippingZipCode').value,
+                        currency: document.getElementById('currency').value,
                     }),
                 });
 
